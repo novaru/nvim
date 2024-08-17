@@ -6,10 +6,10 @@ local M = {}
 
 ---@type Base46HLGroupsList
 M.override = {
-  Function = {
-    italic = true,
+  ["@keyword"] = {
+    bold = true,
   },
-  Comment = {
+  ["@comment"] = {
     italic = true,
   },
 }
