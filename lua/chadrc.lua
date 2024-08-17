@@ -16,11 +16,7 @@ M.ui = {
   hl_add = highlights.add,
   statusline = {
     theme = "default",
-    separator_style = "round",
-  },
-  cmp = {
-    border_color = "vibrant_green",
-    selected_item_bg = "simple",
+    separator_style = "block",
   },
 }
 
