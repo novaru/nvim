@@ -21,6 +21,7 @@ M.override = {
   },
   CursorLineNr = {
     bold = true,
+    fg = "#ccdd00",
   },
   TbBufOff = {
     fg = "#9c9c9c",
