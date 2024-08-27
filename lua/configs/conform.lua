@@ -6,7 +6,7 @@ local options = {
     javascript = { "biome" },
     typescript = { "biome" },
     go = { "gofumpt" },
-    c = { "ast-grep" }
+    c = { "ast-grep" },
     rust = { "rustfmt" },
     python = { "black" },
   },
