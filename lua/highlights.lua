@@ -11,7 +11,7 @@ M.override = {
   },
   ["@comment"] = {
     italic = true,
-    fg = "#4682b4", -- dodger blue
+    fg = "#6c6c6c",
   },
   Visual = {
     bg = "#676767",
