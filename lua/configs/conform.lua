@@ -7,12 +7,16 @@ local options = {
     typescript = { "biome" },
     go = { "gofumpt" },
     rust = { "rustfmt" },
+    haskell = { "ormolu" },
     python = { "black" },
+    zig = {
+      cmd = "zig fmt",
+    },
   },
 
   format_on_save = {
     -- These options will be passed to conform.format()
-    timeout_ms = 500,
+    timeout_ms = 800,
     lsp_fallback = true,
   },
 }

@@ -1,4 +1,4 @@
-local overrides = require("configs.overrides")
+local overrides = require "configs.overrides"
 
 ---@type NvPluginSpec[]
 local plugins = {
@@ -7,17 +7,7 @@ local plugins = {
 
   {
     "neovim/nvim-lspconfig",
-    dependencies = {
-      -- format & linting
-      {
-        "jose-elias-alvarez/null-ls.nvim",
-        -- config = function()
-        --   require "configs.null-ls"
-        -- end,
-      },
-    },
     config = function()
-      require "nvchad.configs.lspconfig"
       require "configs.lspconfig"
     end, -- Override to setup mason-lspconfig
   },
@@ -25,7 +15,7 @@ local plugins = {
   -- override plugin configs
   {
     "williamboman/mason.nvim",
-    opts = overrides.mason
+    opts = overrides.mason,
   },
 
   {
@@ -61,60 +51,54 @@ local plugins = {
 
   {
     "zbirenbaum/copilot-cmp",
-    config = function ()
+    config = function()
       require("copilot_cmp").setup()
-    end
+    end,
   },
 
   {
     "rust-lang/rust.vim",
     ft = "rust",
-    init = function ()
+    init = function()
       vim.g.rustfmt_autosave = 1
-    end
+    end,
   },
   {
     "simrat39/rust-tools.nvim",
     ft = "rust",
     dependencies = "neovim/nvim-lspconfig",
-    opts = function ()
+    opts = function()
       return require "configs.rust-tools"
     end,
-    config = function (_, opts)
-      require "rust-tools".setup(opts)
+    config = function(_, opts)
+      require("rust-tools").setup(opts)
     end,
   },
   {
     "saecki/crates.nvim",
     dependencies = "hrsh7th/nvim-cmp",
-    ft = {"rust", "toml"},
-    config = function (_, opts)
-      local crates = require("crates")
+    ft = { "rust", "toml" },
+    config = function(_, opts)
+      local crates = require "crates"
       crates.setup(opts)
       crates.show()
     end,
   },
   {
     "hrsh7th/nvim-cmp",
-    opts = function ()
+    opts = function()
       local M = require "nvchad.configs.cmp"
       table.insert(M.sources, { name = "crates" })
       return M
-    end
+    end,
   },
   {
     "andweeb/presence.nvim",
     event = "VeryLazy",
     config = function()
       require("presence").setup(overrides.presence)
-    end
-},
-
-  -- To make a plugin not be loaded
-  -- {
-  --   "NvChad/nvim-colorizer.lua",
-  --   enabled = false
-  -- },
+    end,
+  },
 
   -- All NvChad plugins are lazy-loaded by default
   -- For a plugin to be loaded, you will need to set either `ft`, `cmd`, `keys`, `event`, or set `lazy = false`

@@ -1,7 +1,3 @@
--- To find any highlight groups: "<cmd> Telescope highlights"
--- Each highlight group can take a table with variables fg, bg, bold, italic, etc
--- base30 variable names can also be used as colors
-
 local M = {}
 
 ---@type Base46HLGroupsList
@@ -14,7 +10,7 @@ M.override = {
     fg = "#6c6c6c",
   },
   Visual = {
-    bg = "#676767",
+    bg = "#33373a",
   },
   LineNr = {
     fg = "#9c9c9c",
