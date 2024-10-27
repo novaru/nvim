@@ -9,9 +9,9 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 
 M.ui = {
-  theme = "radium",
-  theme_toggle = { "radium", "chadracula" },
-  transparency = true,
+  theme = "catppuccin",
+  theme_toggle = { "catppuccin", "radium" },
+  -- transparency = true,
   hl_override = highlights.override,
   hl_add = highlights.add,
   statusline = {

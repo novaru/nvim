@@ -9,6 +9,9 @@ M.override = {
     italic = true,
     fg = "#6c6c6c",
   },
+  ["@operator"] = {
+    fg = "teal",
+  },
   Visual = {
     bg = "#33373a",
   },
@@ -17,7 +20,7 @@ M.override = {
   },
   CursorLineNr = {
     bold = true,
-    fg = "#ccdd00",
+    fg = "yellow",
   },
   TbBufOff = {
     fg = "#9c9c9c",

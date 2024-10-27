@@ -8,6 +8,14 @@ M.general = {
   },
 }
 
+-- Go To Definition
+vim.api.nvim_set_keymap(
+  "n",
+  "gd",
+  "<cmd>lua vim.lsp.buf.definition()<CR>",
+  { noremap = true, silent = true, desc = "Go To Definition" }
+)
+
 -- Copilot toggle
 local copilot_on = true
 
