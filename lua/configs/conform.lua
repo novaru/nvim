@@ -1,11 +1,14 @@
 local options = {
   formatters_by_ft = {
+    c = { "clang-format" },
     lua = { "stylua" },
     css = { "prettier" },
     html = { "prettier" },
     javascript = { "biome" },
     typescript = { "biome" },
-    go = { "gofumpt" },
+    go = {
+      cmd = "go fmt",
+    },
     rust = { "rustfmt" },
     haskell = { "ormolu" },
     python = { "black" },
