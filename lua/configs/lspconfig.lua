@@ -10,3 +10,13 @@ for _, lsp in ipairs(servers) do
     capabilities = capabilities,
   }
 end
+
+-- clangd setup
+lspconfig.clangd.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  offset_encoding = "utf-16",
+  cmd = { "clangd", "--background-index" },
+  filetypes = { "c", "cpp", "objc", "objcpp" },
+  root_dir = lspconfig.util.root_pattern("compile_commands.json", "compile_flags.txt", ".git"),
+}

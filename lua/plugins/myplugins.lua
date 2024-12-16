@@ -100,6 +100,18 @@ local plugins = {
     end,
   },
   {
+    "mfussenegger/nvim-dap",
+    event = "VeryLazy",
+  },
+  {
+    "leoluz/nvim-dap-go",
+    ft = "go",
+    dependencies = "mfussenegger/nvim-dap",
+    config = function(_, opts)
+      require("dap-go").setup(opts)
+    end,
+  },
+  {
     "yetone/avante.nvim",
     event = "VeryLazy",
     lazy = false,
