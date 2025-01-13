@@ -4,6 +4,7 @@ local options = {
     lua = { "stylua" },
     css = { "prettier" },
     html = { "prettier" },
+    json = { "biome" },
     javascript = { "biome" },
     typescript = { "biome" },
     go = {
