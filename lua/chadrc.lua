@@ -4,9 +4,9 @@ local M = {}
 highlight.setup()
 
 M.base46 = {
-  theme = "catppuccin",
-  theme_toggle = { "catppuccin", "radium" },
-  -- transparency = true,
+  theme = "pastelDark",
+  theme_toggle = { "pastelDark", "radium" },
+  transparency = true,
   hl_override = {
     ["@comment"] = {
       italic = true,
@@ -60,38 +60,38 @@ M.ui = {
   },
 }
 
--- M.mappings = require "mappings"
---
--- for mode, mode_mappings in pairs(M.mappings.general) do
---   for key, mapping in pairs(mode_mappings) do
---     vim.keymap.set(mode, key, mapping[1], {
---       desc = mapping[2],
---       noremap = mapping.opts and mapping.opts.noremap,
---       silent = mapping.opts and mapping.opts.silent,
---       nowait = mapping.opts and mapping.opts.nowait,
---     })
---   end
--- end
---
--- -- For DAP mappings
--- for key, mapping in pairs(M.mappings.dap.n) do
---   vim.keymap.set("n", key, mapping[1], {
---     desc = mapping[2],
---   })
--- end
---
--- -- For DAP Go mappings
--- for key, mapping in pairs(M.mappings.dap_go.n) do
---   vim.keymap.set("n", key, mapping[1], {
---     desc = mapping[2],
---   })
--- end
---
--- -- For Crates mappings
--- for key, mapping in pairs(M.mappings.crates.n) do
---   vim.keymap.set("n", key, mapping[1], {
---     desc = mapping[2],
---   })
--- end
+M.mappings = require "mappings"
+
+for mode, mode_mappings in pairs(M.mappings.general) do
+  for key, mapping in pairs(mode_mappings) do
+    vim.keymap.set(mode, key, mapping[1], {
+      desc = mapping[2],
+      noremap = mapping.opts and mapping.opts.noremap,
+      silent = mapping.opts and mapping.opts.silent,
+      nowait = mapping.opts and mapping.opts.nowait,
+    })
+  end
+end
+
+-- For DAP mappings
+for key, mapping in pairs(M.mappings.dap.n) do
+  vim.keymap.set("n", key, mapping[1], {
+    desc = mapping[2],
+  })
+end
+
+-- For DAP Go mappings
+for key, mapping in pairs(M.mappings.dap_go.n) do
+  vim.keymap.set("n", key, mapping[1], {
+    desc = mapping[2],
+  })
+end
+
+-- For Crates mappings
+for key, mapping in pairs(M.mappings.crates.n) do
+  vim.keymap.set("n", key, mapping[1], {
+    desc = mapping[2],
+  })
+end
 
 return M
