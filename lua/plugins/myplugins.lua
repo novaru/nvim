@@ -100,6 +100,13 @@ local plugins = {
     end,
   },
   {
+    "shellRaining/hlchunk.nvim",
+    event = { "BufReadPre", "BufNewFile" },
+    config = function()
+      require("hlchunk").setup(overrides.hlchunk)
+    end,
+  },
+  {
     "mfussenegger/nvim-dap",
     event = "VeryLazy",
   },
@@ -118,6 +125,10 @@ local plugins = {
     version = false,
     opts = {
       provider = "copilot",
+      auto_suggestions_provider = "copilot",
+      copilot = {
+        model = "claude-3.5-sonnet",
+      },
     },
     -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
     build = "make",

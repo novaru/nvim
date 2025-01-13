@@ -162,4 +162,17 @@ M.presence = {
   line_number_text = "Line %s out of %s",
 }
 
+M.hlchunk = {
+  chunk = {
+    enable = true,
+    chars = {
+      horizontal_line = "─",
+      vertical_line = "│",
+      left_top = "┌",
+      left_bottom = "└",
+      right_arrow = "─",
+    },
+  },
+}
+
 return M
