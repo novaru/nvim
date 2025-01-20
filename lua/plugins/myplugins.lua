@@ -7,6 +7,11 @@ local plugins = {
 
   {
     "neovim/nvim-lspconfig",
+    opts = {
+      inlay_hints = {
+        enabled = true,
+      },
+    },
     config = function()
       require "configs.lspconfig"
     end, -- Override to setup mason-lspconfig
@@ -98,6 +103,12 @@ local plugins = {
     config = function()
       require("presence").setup(overrides.presence)
     end,
+  },
+  { "nvzone/volt", lazy = true },
+
+  {
+    "nvzone/minty",
+    cmd = { "Shades", "Huefy" },
   },
   {
     "shellRaining/hlchunk.nvim",

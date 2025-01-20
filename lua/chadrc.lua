@@ -28,6 +28,9 @@ M.base46 = {
     WinSeparator = {
       fg = "#6c6c6c",
     },
+    NonText = {
+      fg = "#5c7589",
+    },
   },
   hl_add = {
     NvimTreeOpenedFolderName = { fg = "green", bold = true },
