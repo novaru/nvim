@@ -24,7 +24,6 @@ lspconfig.gopls.setup {
     gopls = {
       hints = {
         compositeLiteralFields = true,
-        compositeLiteralTypes = true,
         functionTypeParameters = true,
         parameterNames = true,
       },

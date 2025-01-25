@@ -4,14 +4,10 @@ local M = {}
 highlight.setup()
 
 M.base46 = {
-  theme = "pastelDark",
-  theme_toggle = { "pastelDark", "radium" },
+  theme = "gruvbox",
+  theme_toggle = { "gruvbox", "cattppuccin" },
   transparency = true,
   hl_override = {
-    ["@comment"] = {
-      italic = true,
-      fg = "#9c9c9c",
-    },
     ["@operator"] = {
       fg = "teal",
     },

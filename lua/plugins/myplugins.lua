@@ -72,9 +72,6 @@ local plugins = {
     "simrat39/rust-tools.nvim",
     ft = "rust",
     dependencies = "neovim/nvim-lspconfig",
-    opts = function()
-      return require "configs.rust-tools"
-    end,
     config = function(_, opts)
       require("rust-tools").setup(opts)
     end,
@@ -130,16 +127,16 @@ local plugins = {
     end,
   },
   {
+    "folke/todo-comments.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+  },
+  {
     "yetone/avante.nvim",
     event = "VeryLazy",
     lazy = false,
     version = false,
     opts = {
       provider = "copilot",
-      auto_suggestions_provider = "copilot",
-      copilot = {
-        model = "claude-3.5-sonnet",
-      },
     },
     -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
     build = "make",
