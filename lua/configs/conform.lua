@@ -6,7 +6,7 @@ local options = {
     html = { "prettier" },
     json = { "biome" },
     javascript = { "biome" },
-    typescript = { "biome" },
+    typescript = { "prettier" },
     go = {
       cmd = "go fmt",
     },

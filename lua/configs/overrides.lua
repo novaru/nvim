@@ -33,6 +33,7 @@ M.treesitter = {
 M.nvimtree = {
   git = {
     enable = true,
+    ignore = false,
   },
 
   renderer = {
