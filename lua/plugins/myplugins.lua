@@ -95,6 +95,13 @@ local plugins = {
     end,
   },
   {
+    "rachartier/tiny-inline-diagnostic.nvim",
+    event = "VeryLazy",
+    config = function()
+      require "configs.inline-diagnostics"
+    end,
+  },
+  {
     "andweeb/presence.nvim",
     event = "VeryLazy",
     config = function()
@@ -134,9 +141,14 @@ local plugins = {
     "yetone/avante.nvim",
     event = "VeryLazy",
     lazy = false,
-    version = false,
+    version = "*",
     opts = {
       provider = "copilot",
+      copilot = {
+        model = "claude-3.7-sonnet",
+        temperature = 0,
+        max_tokens = 8192,
+      },
     },
     -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
     build = "make",
