@@ -18,7 +18,6 @@ M.base46 = {
       fg = "#9c9c9c",
     },
     CursorLineNr = {
-      bold = true,
       fg = "yellow",
     },
     WinSeparator = {

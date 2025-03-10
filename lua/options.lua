@@ -7,3 +7,4 @@ o.shiftwidth = 4
 o.expandtab = true
 o.number = true
 o.relativenumber = true
+o.linebreak = true
