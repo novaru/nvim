@@ -6,10 +6,13 @@ highlight.setup()
 M.base46 = {
   theme = "gruvbox",
   theme_toggle = { "gruvbox", "cattppuccin" },
-  transparency = true,
+  -- transparency = false,
   hl_override = {
     ["@operator"] = {
       fg = "teal",
+    },
+    Normal = {
+      bg = "#1d2021",
     },
     Visual = {
       bg = "#33373a",
@@ -50,12 +53,12 @@ M.ui = {
     modules = nil,
   },
 
-  tabufline = {
-    enabled = true,
-    lazyload = true,
-    order = { "treeOffset", "buffers", "tabs", "btns" },
-    modules = nil,
-  },
+  -- tabufline = {
+  --   enabled = true,
+  --   lazyload = true,
+  --   order = { "treeOffset", "buffers", "tabs", "btns" },
+  --   modules = nil,
+  -- },
 }
 
 M.mappings = require "mappings"
