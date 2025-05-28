@@ -11,7 +11,7 @@ local options = {
       cmd = "go fmt",
     },
     rust = { "rustfmt" },
-    haskell = { "ormolu" },
+    haskell = { "fourmolu" },
     python = { "black" },
     zig = {
       cmd = "zig fmt",

@@ -67,6 +67,18 @@ M.general.n["<M-\\>"] = {
   opts = { noremap = true, silent = true },
 }
 
+-- Formatting keymaps
+local conform = require "configs.conform"
+local format_on_save_enabled = true
+
+function ToggleFormatOnSave()
+  format_on_save_enabled = not format_on_save_enabled
+  conform.format_on_save = format_on_save_enabled and { lsp_fallback = true } or nil
+  vim.notify("Format on save: " .. (format_on_save_enabled and "enabled" or "disabled"))
+end
+
+vim.api.nvim_set_keymap("n", "<leader>tf", "<cmd>lua ToggleFormatOnSave()<CR>", { noremap = true, silent = true })
+
 -- Rust Crates keymaps
 M.crates = {
   n = {
