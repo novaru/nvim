@@ -7,6 +7,9 @@ local options = {
     json = { "biome" },
     javascript = { "biome" },
     typescript = { "prettier" },
+    purescript = { "purs-tidy" },
+    svelte = { "prettier" },
+    php = { "php-cs-fixer" },
     go = {
       cmd = "go fmt",
     },

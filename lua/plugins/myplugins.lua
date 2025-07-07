@@ -69,12 +69,9 @@ local plugins = {
     end,
   },
   {
-    "simrat39/rust-tools.nvim",
-    ft = "rust",
-    dependencies = "neovim/nvim-lspconfig",
-    config = function(_, opts)
-      require("rust-tools").setup(opts)
-    end,
+    "mrcjkb/rustaceanvim",
+    version = "^6",
+    lazy = false,
   },
   {
     "saecki/crates.nvim",
@@ -150,11 +147,29 @@ local plugins = {
     version = "*",
     opts = {
       provider = "copilot",
-      copilot = {
-        model = "claude-3.7-sonnet",
-        temperature = 0,
-        max_tokens = 8192,
+      providers = {
+        copilot = {
+          model = "claude-3.7-sonnet",
+          extra_request_body = {
+            temperature = 0,
+            max_tokens = 8192,
+          },
+        },
       },
+      -- provider = "groq",
+      -- providers = {
+      --   groq = {
+      --     __inherited_from = "openai",
+      --     api_key_name = "cmd:echo $GROQ_API_KEY",
+      --     endpoint = "https://api.groq.com/openai/v1/",
+      --     model = "llama-3.3-70b-versatile",
+      --     disable_tools = false,
+      --     extra_request_body = {
+      --       temperature = 0,
+      --       max_tokens = 8192, -- remember to increase this value, otherwise it will stop generating halfway
+      --     },
+      --   },
+      -- },
     },
     -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
     build = "make",
