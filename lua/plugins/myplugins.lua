@@ -139,14 +139,14 @@ local plugins = {
   {
     "sphamba/smear-cursor.nvim",
     opts = {
-      cursor_color = "#ff8800",
-      stiffness = 0.3,
-      trailing_stiffness = 0.1,
-      damping = 0.5,
-      trailing_exponent = 5,
-      never_draw_over_target = true,
-      hide_target_hack = true,
-      gamma = 1,
+      enabled = true,
+      stiffness = 0.8,
+      trailing_stiffness = 0.5,
+      stiffness_insert_mode = 0.7,
+      trailing_stiffness_insert_mode = 0.7,
+      damping = 0.8,
+      damping_insert_mode = 0.8,
+      distance_stop_animating = 0.5,
     },
   },
   {
