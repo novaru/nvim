@@ -85,7 +85,9 @@ lspconfig.emmet_language_server.setup {
     --- @type string[]
     excludeLanguages = {},
     --- @type string[]
-    extensionsPath = {},
+    extensionsPath = {
+      vim.fn.stdpath "config" .. "/lua/configs/",
+    },
     --- @type table<string, any> [Emmet Docs](https://docs.emmet.io/customization/preferences/)
     preferences = {},
     --- @type boolean Defaults to `true`

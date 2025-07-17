@@ -11,6 +11,11 @@ M.general = {
   i = {
     ["<C-l>"] = { "λ", "Insert lambda", opts = { noremap = true, silent = true } },
     ["<C-p>"] = { "π", "Insert pi", opts = { noremap = true, silent = true } },
+    ["<M-E>"] = {
+      "if err != nil {\n}<Esc>O",
+      "Insert if err block",
+      opts = { noremap = true, expr = true, silent = true },
+    },
   },
 }
 
