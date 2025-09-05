@@ -61,18 +61,18 @@ local plugins = {
     end,
   },
 
-  {
-    "rust-lang/rust.vim",
-    ft = "rust",
-    init = function()
-      vim.g.rustfmt_autosave = 1
-    end,
-  },
-  {
-    "mrcjkb/rustaceanvim",
-    version = "^6",
-    lazy = false,
-  },
+  -- {
+  --   "rust-lang/rust.vim",
+  --   ft = "rust",
+  --   init = function()
+  --     vim.g.rustfmt_autosave = 1
+  --   end,
+  -- },
+  -- {
+  --   "mrcjkb/rustaceanvim",
+  --   version = "^6",
+  --   lazy = false,
+  -- },
   {
     "saecki/crates.nvim",
     dependencies = "hrsh7th/nvim-cmp",
@@ -162,7 +162,7 @@ local plugins = {
       provider = "copilot",
       providers = {
         copilot = {
-          model = "claude-3.7-sonnet",
+          model = "gpt-4.1",
           extra_request_body = {
             temperature = 0,
             max_tokens = 8192,
