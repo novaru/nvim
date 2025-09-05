@@ -16,6 +16,8 @@ local options = {
     rust = { "rustfmt" },
     haskell = { "fourmolu" },
     python = { "black" },
+    sql = { "pgformatter" },
+    vue = { "prettier" },
     zig = {
       cmd = "zig fmt",
     },
