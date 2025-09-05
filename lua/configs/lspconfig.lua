@@ -19,6 +19,7 @@ local servers = {
   "pyright",
   "rust_analyzer",
   "hls",
+  "vtsls",
   "zls",
 }
 
@@ -75,6 +76,7 @@ lspconfig.emmet_language_server.setup {
     "scss",
     "php",
     "pug",
+    "vue",
     "typescriptreact",
   },
   -- Read more about this options in the [vscode docs](https://code.visualstudio.com/docs/editor/emmet#_emmet-configuration).
@@ -100,5 +102,70 @@ lspconfig.emmet_language_server.setup {
     syntaxProfiles = {},
     --- @type table<string, string> [Emmet Docs](https://docs.emmet.io/customization/snippets/#variables)
     variables = {},
+  },
+}
+
+-- vtsls setup
+lspconfig.vtsls.setup {
+  filetypes = {
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "vue",
+  },
+  settings = {
+    vtsls = {
+      inlayHints = {
+        enumMemberValues = {
+          enabled = true,
+        },
+        functionLikeReturnTypes = {
+          enabled = true,
+        },
+        parameterNames = { enabled = "all" },
+        parameterTypes = {
+          enabled = true,
+          suppressWhenArgumentMatchesName = true,
+        },
+        propertyDeclarationTypes = {
+          enabled = true,
+        },
+        variableTypes = {
+          enabled = true,
+        },
+      },
+      tsserver = {
+        globalPlugins = {
+          {
+            name = "@vue/typescript-plugin",
+            location = vim.fn.stdpath "data" .. "/mason/packages/vue-language-server/node_modules/@vue/language-server",
+            languages = { "vue" },
+            configNamespace = "typescript",
+          },
+        },
+      },
+    },
+    typescript = {
+      inlayHints = {
+        enumMemberValues = {
+          enabled = true,
+        },
+        functionLikeReturnTypes = {
+          enabled = false,
+        },
+        parameterNames = { enabled = "all" },
+        parameterTypes = {
+          enabled = true,
+          suppressWhenArgumentMatchesName = true,
+        },
+        propertyDeclarationTypes = {
+          enabled = true,
+        },
+        variableTypes = {
+          enabled = false,
+        },
+      },
+    },
   },
 }
