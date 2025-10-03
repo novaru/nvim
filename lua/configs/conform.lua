@@ -2,13 +2,13 @@ local options = {
   formatters_by_ft = {
     c = { "clang-format" },
     lua = { "stylua" },
-    css = { "prettier" },
-    html = { "prettier" },
+    css = { "prettierd" },
+    html = { "prettierd" },
     json = { "biome" },
     javascript = { "biome" },
-    typescript = { "prettier" },
+    typescript = { "prettierd" },
     purescript = { "purs-tidy" },
-    svelte = { "prettier" },
+    svelte = { "prettierd" },
     php = { "php-cs-fixer" },
     go = {
       cmd = "go fmt",
@@ -17,7 +17,7 @@ local options = {
     haskell = { "fourmolu" },
     python = { "black" },
     sql = { "pgformatter" },
-    vue = { "prettier" },
+    vue = { "prettierd" },
     zig = {
       cmd = "zig fmt",
     },
@@ -25,7 +25,7 @@ local options = {
 
   format_on_save = {
     -- These options will be passed to conform.format()
-    timeout_ms = 800,
+    timeout_ms = 500,
     lsp_fallback = true,
   },
 }
