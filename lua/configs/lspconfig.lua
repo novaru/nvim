@@ -1,70 +1,81 @@
-local lspconfig = require "lspconfig"
-local on_attach = function(client)
-  if client.server_capabilities.inlayHintProvider then
-    vim.lsp.inlay_hint.enable(true)
-  end
-end
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-
-local servers = {
-  "asm_lsp",
-  "html",
-  "cssls",
-  "lua_ls",
-  "ts_ls",
-  "clangd",
-  "gopls",
-  "intelephense",
-  "purescriptls",
-  "pyright",
-  "rust_analyzer",
-  "hls",
-  "vtsls",
-  "zls",
-}
-
-for _, lsp in ipairs(servers) do
-  lspconfig[lsp].setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-  }
-end
-
--- gopls setup
-lspconfig.gopls.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
+vim.lsp.config("gopls", {
   settings = {
     gopls = {
       hints = {
+        assignVariableTypes = true,
         compositeLiteralFields = true,
+        compositeLiteralTypes = true,
+        constantValues = true,
         functionTypeParameters = true,
         parameterNames = true,
+        rangeVariableTypes = true,
       },
     },
   },
-}
+})
 
--- clangd setup
-lspconfig.clangd.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
-  offset_encoding = "utf-16",
-  cmd = { "clangd", "--background-index" },
+vim.lsp.config("clangd", {
+  cmd = {
+    "clangd",
+    "--background-index",
+    "--clang-tidy",
+    "--header-insertion=iwyu",
+    "--completion-style=detailed",
+    "--function-arg-placeholders",
+  },
   filetypes = { "c", "cpp", "objc", "objcpp" },
-  root_dir = lspconfig.util.root_pattern("compile_commands.json", "compile_flags.txt", ".git"),
-}
+  root_markers = { "compile_commands.json", "compile_flags.txt", ".git" },
+})
 
--- purescriptls setup
-lspconfig.purescriptls.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
+vim.lsp.config("purescriptls", {
   filetypes = { "purescript" },
-  root_dir = lspconfig.util.root_pattern("spago.yaml", "package.json", ".git"),
-}
+  root_markers = { "spago.yaml", "spago.dhall", "package.json", ".git" },
+})
 
--- emmet-language-server setup
-lspconfig.emmet_language_server.setup {
+vim.lsp.config("vtsls", {
+  filetypes = {
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "svelte",
+  },
+  settings = {
+    vtsls = {
+      autoUseWorkspaceTsdk = true,
+    },
+    typescript = {
+      updateImportsOnFileMove = { enabled = "always" },
+      suggest = {
+        completeFunctionCalls = true,
+      },
+      inlayHints = {
+        enumMemberValues = { enabled = true },
+        functionLikeReturnTypes = { enabled = true },
+        parameterNames = { enabled = "all" },
+        parameterTypes = { enabled = true },
+        propertyDeclarationTypes = { enabled = true },
+        variableTypes = { enabled = true },
+      },
+    },
+    javascript = {
+      updateImportsOnFileMove = { enabled = "always" },
+      suggest = {
+        completeFunctionCalls = true,
+      },
+      inlayHints = {
+        enumMemberValues = { enabled = true },
+        functionLikeReturnTypes = { enabled = true },
+        parameterNames = { enabled = "all" },
+        parameterTypes = { enabled = true },
+        propertyDeclarationTypes = { enabled = true },
+        variableTypes = { enabled = true },
+      },
+    },
+  },
+})
+
+vim.lsp.config("emmet_language_server", {
   filetypes = {
     "css",
     "eruby",
@@ -79,93 +90,53 @@ lspconfig.emmet_language_server.setup {
     "vue",
     "typescriptreact",
   },
-  -- Read more about this options in the [vscode docs](https://code.visualstudio.com/docs/editor/emmet#_emmet-configuration).
-  -- **Note:** only the options listed in the table are supported.
-  init_options = {
-    ---@type table<string, string>
+  settings = {
     includeLanguages = {},
-    --- @type string[]
     excludeLanguages = {},
-    --- @type string[]
     extensionsPath = {
       vim.fn.stdpath "config" .. "/lua/configs/",
     },
-    --- @type table<string, any> [Emmet Docs](https://docs.emmet.io/customization/preferences/)
     preferences = {},
-    --- @type boolean Defaults to `true`
     showAbbreviationSuggestions = true,
-    --- @type "always" | "never" Defaults to `"always"`
     showExpandedAbbreviation = "always",
-    --- @type boolean Defaults to `false`
     showSuggestionsAsSnippets = false,
-    --- @type table<string, any> [Emmet Docs](https://docs.emmet.io/customization/syntax-profiles/)
     syntaxProfiles = {},
-    --- @type table<string, string> [Emmet Docs](https://docs.emmet.io/customization/snippets/#variables)
     variables = {},
   },
+})
+
+-- Enable all servers
+local servers = {
+  "asm_lsp",
+  "html",
+  "cssls",
+  "lua_ls",
+  "ts_ls",
+  "clangd",
+  "gopls",
+  "intelephense",
+  "purescriptls",
+  "pyright",
+  "rust_analyzer",
+  "hls",
+  "astrols",
+  "svelte",
+  "vtsls",
+  "zls",
+  "emmet_language_server",
 }
 
--- vtsls setup
-lspconfig.vtsls.setup {
-  filetypes = {
-    "javascript",
-    "javascriptreact",
-    "typescript",
-    "typescriptreact",
-    "vue",
-  },
-  settings = {
-    vtsls = {
-      inlayHints = {
-        enumMemberValues = {
-          enabled = true,
-        },
-        functionLikeReturnTypes = {
-          enabled = true,
-        },
-        parameterNames = { enabled = "all" },
-        parameterTypes = {
-          enabled = true,
-          suppressWhenArgumentMatchesName = true,
-        },
-        propertyDeclarationTypes = {
-          enabled = true,
-        },
-        variableTypes = {
-          enabled = true,
-        },
-      },
-      tsserver = {
-        globalPlugins = {
-          {
-            name = "@vue/typescript-plugin",
-            location = vim.fn.stdpath "data" .. "/mason/packages/vue-language-server/node_modules/@vue/language-server",
-            languages = { "vue" },
-            configNamespace = "typescript",
-          },
-        },
-      },
-    },
-    typescript = {
-      inlayHints = {
-        enumMemberValues = {
-          enabled = true,
-        },
-        functionLikeReturnTypes = {
-          enabled = false,
-        },
-        parameterNames = { enabled = "all" },
-        parameterTypes = {
-          enabled = true,
-          suppressWhenArgumentMatchesName = true,
-        },
-        propertyDeclarationTypes = {
-          enabled = true,
-        },
-        variableTypes = {
-          enabled = false,
-        },
-      },
-    },
-  },
-}
+for _, lsp in ipairs(servers) do
+  vim.lsp.enable(lsp)
+end
+
+-- Global LSP settings (apply to all servers)
+-- Enable inlay hints by default
+vim.api.nvim_create_autocmd("LspAttach", {
+  callback = function(args)
+    local client = vim.lsp.get_client_by_id(args.data.client_id)
+    if client and client.supports_method "textDocument/inlayHint" then
+      vim.lsp.inlay_hint.enable(true, { bufnr = args.buf })
+    end
+  end,
+})
