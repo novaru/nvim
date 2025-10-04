@@ -1,12 +1,20 @@
 {
 	"html": {
 		"snippets": {
-			"phpp": "<?= ${1} ?>"
+			"phpp": "<?= ${1} ?>",
+			"php": "<php ${1}>",
+			"phpc": "<?php ${1} ?>",
+			"valh": "<?= \\$validation->hasError('${1}') ? 'is-invalid' : ''; ?>",
+			"valg": "<?= \\$validation->getError('${1}'); ?>"
 		}
 	},
 	"php": {
 		"snippets": {
-			"phpp": "<?= ${1} ?>"
+			"phpp": "<?= ${1} ?>",
+			"php": "<php ${1}>",
+			"phpc": "<?php ${1} ?>",
+			"valh": "<?= \\$validation->hasError('${1}') ? 'is-invalid' : ''; ?>",
+			"valg": "<?= \\$validation->getError('${1}'); ?>"
 		}
 	}
 }
