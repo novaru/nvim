@@ -55,7 +55,7 @@ vim.lsp.config("vtsls", {
         parameterNames = { enabled = "all" },
         parameterTypes = { enabled = true },
         propertyDeclarationTypes = { enabled = true },
-        variableTypes = { enabled = true },
+        variableTypes = { enabled = false },
       },
     },
     javascript = {
