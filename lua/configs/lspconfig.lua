@@ -51,7 +51,7 @@ vim.lsp.config("vtsls", {
       },
       inlayHints = {
         enumMemberValues = { enabled = true },
-        functionLikeReturnTypes = { enabled = true },
+        functionLikeReturnTypes = { enabled = false },
         parameterNames = { enabled = "all" },
         parameterTypes = { enabled = true },
         propertyDeclarationTypes = { enabled = true },
